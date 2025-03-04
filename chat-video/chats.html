@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BuzzTalk</title>
+    <style>
+      /* Add your CSS styles here */
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: #f8f8f8;
+        font-family: "Roboto", sans-serif;
+        background-image: url("back1.jpg"); /* Add your background image in the same folder */
+        background-size: cover;
+      }
+
+      .chat_section {
+        width: 100%;
+        max-width: 800px;
+        background: #fff;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        margin: 10px;
+        border-radius: 8px;
+      }
+
+      .brand {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(to right, #434343 0%, black 100%);
+      }
+
+      .brand h1 {
+        color: white;
+      }
+
+      .message_area {
+        height: 500px;
+        padding: 16px;
+        overflow-y: auto;
+        background-image: url("box3.jpg"); /* Add your background image in the same folder */
+        background-size: cover;
+      }
+
+      textarea {
+        width: 100%;
+        border: none;
+        padding: 20px;
+        font-size: 16px;
+        outline: none;
+      }
+
+      .message {
+        padding: 20px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        max-width: 80%;
+      }
+
+      .incoming {
+        background: #6cb2eb;
+        color: white;
+      }
+
+      .outgoing {
+        background: #38c172;
+        color: white;
+        align-self: flex-end;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="chat_section">
+      <div class="brand">
+        <h1>BuzzTalk</h1>
+      </div>
+      <div class="message_area"></div>
+      <textarea
+        id="textarea"
+        cols="30"
+        rows="1"
+        placeholder="Write a message..."
+      ></textarea>
+    </section>
+
+    <script>
+      const textarea = document.querySelector("#textarea");
+      const messageArea = document.querySelector(".message_area");
+      let name;
+
+      // Prompt user for a name
+      do {
+        name = prompt("Please enter your name:");
+      } while (!name);
+
+      // Append message to the DOM
+      function appendMessage(msg, type) {
+        const mainDiv = document.createElement("div");
+        mainDiv.classList.add(type, "message");
+        mainDiv.innerHTML = `
+        <h4>${msg.user}</h4>
+        <p>${msg.message}</p>
+      `;
+        messageArea.appendChild(mainDiv);
+      }
+
+      // Send message locally (simulate)
+      textarea.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") {
+          const message = e.target.value.trim();
+          if (message) {
+            const msg = { user: name, message };
+            appendMessage(msg, "outgoing");
+            textarea.value = "";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

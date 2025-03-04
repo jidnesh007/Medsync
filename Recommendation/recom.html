@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Data Collector</title>
+    <link rel="stylesheet" href="recomend.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Patient Data Collector</h1>
+        <form id="patientForm">
+            <h2>Lifestyle</h2>
+            <label for="exercise">Hours of exercise per week:</label>
+            <input type="number" id="exercise" name="exercise" required>
+
+            <label for="sleep">Average hours of sleep per night:</label>
+            <input type="number" id="sleep" name="sleep" required>
+
+            <label for="diet">Diet type:</label>
+            <select id="diet" name="diet" required>
+                <option value="">Select diet type</option>
+                <option value="omnivore">Omnivore</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="keto">Keto</option>
+            </select>
+
+            <h2>Symptoms</h2>
+            <label for="symptoms">Current symptoms (comma-separated):</label>
+            <input type="text" id="symptoms" name="symptoms" required>
+
+            <h2>Medical History</h2>
+            <label for="conditions">Existing medical conditions (comma-separated):</label>
+            <input type="text" id="conditions" name="conditions">
+
+            <label for="medications">Current medications (comma-separated):</label>
+            <input type="text" id="medications" name="medications">
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="recommendations" class="hidden">
+            <h2>Personalized Recommendations</h2>
+            <p id="treatmentPlan"></p>
+            <p id="lifestyleChanges"></p>
+        </div>
+    </div>
+    <script src="rec.js"></script>
+</body>
+</html>
+
