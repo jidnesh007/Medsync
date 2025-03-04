@@ -1,10 +1,16 @@
+/* Root Variables for Theme Colors */
 :root {
   --primary-color: #3498db;
   --secondary-color: #2ecc71;
   --background-color: #f4f4f4;
   --text-color: #333;
+  --border-color: #ddd;
+  --error-color: #e74c3c;
+  --white-color: #fff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
+/* Global Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,77 +24,115 @@ body {
   color: var(--text-color);
 }
 
+/* Centered Container with Shadow */
 .container {
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--white-color);
+  border-radius: 12px;
+  box-shadow: 0 6px 10px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover Effect for Better UI */
+.container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 12px var(--shadow-color);
+}
+
+/* Headings */
 h1 {
   text-align: center;
   margin-bottom: 2rem;
   color: var(--primary-color);
+  font-size: 2rem;
 }
 
+/* Form Group */
 .form-group {
   margin-bottom: 1.5rem;
 }
 
+/* Labels */
 label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
+  font-size: 1rem;
 }
 
+/* Input, Select, and Textarea */
 input,
 select,
 textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
   font-size: 1rem;
+  background: var(--white-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Focus Effect for Better UX */
 input:focus,
 select:focus,
 textarea:focus {
   outline: none;
   border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
 }
 
+/* Buttons */
 button {
   display: block;
   width: 100%;
   padding: 1rem;
   background-color: var(--primary-color);
-  color: #fff;
+  color: var(--white-color);
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Hover Effect for Buttons */
 button:hover {
   background-color: var(--secondary-color);
+  transform: scale(1.05);
 }
 
+/* Active Button Effect */
+button:active {
+  transform: scale(0.98);
+}
+
+/* Error Handling */
 .error {
-  border-color: #e74c3c;
+  border-color: var(--error-color);
 }
 
 .error-message {
-  color: #e74c3c;
+  color: var(--error-color);
   font-size: 0.9rem;
   margin-top: 0.25rem;
 }
 
+/* Responsive Design for Mobile Devices */
 @media (max-width: 768px) {
   .container {
-    padding: 1rem;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  button {
+    padding: 0.9rem;
+    font-size: 0.95rem;
   }
 }
